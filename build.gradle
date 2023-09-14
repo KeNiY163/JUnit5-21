@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+group 'guru.qa'
+version '1.0'
+
+dependencies {
+    testImplementation (
+            'com.codeborne:selenide:6.16.0',
+            'org.junit.jupiter:junit-jupiter:5.9.3'
+
+    )
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+}
+
+test {
+    String tags = System.getProperty("tags") != null ? System.getProperty("tags") : 'smoke'
+    useJUnitPlatform {
+        includeTags tags
+    }
+}
