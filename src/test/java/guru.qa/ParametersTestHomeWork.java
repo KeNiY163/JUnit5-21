@@ -14,18 +14,17 @@ import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class ParametrsTest extends BaseTest{
-
+public class ParametersTestHomeWork extends BaseTest{
     SelenideElement inputSearch = $("[data-qa='header-search-input']"),
-                    titleText = $(By.xpath("//h1[contains(@class, 'title')]")),
-                    lkCancelButton = $(By.xpath("//div[contains(@class, 'sla-notification__cancel')]")),
-                    cityButton = $("[data-qa='button-confirm-region']"),
-                    localeButton = $(By.xpath("(//div[contains(@class, 'GCM-Menu-ItemLabel')])[7]"));
+            titleText = $(By.xpath("//h1[contains(@class, 'title')]")),
+            lkCancelButton = $(By.xpath("//div[contains(@class, 'sla-notification__cancel')]")),
+            cityButton = $("[data-qa='button-confirm-region']"),
+            localeButton = $(By.xpath("(//div[contains(@class, 'GCM-Menu-ItemLabel')])[7]"));
 
 
     ElementsCollection  itemSearch = $$(By.xpath("//div[contains(@class, 'catalog-2-level-product-card')]")),
-                        localeList = $$(By.xpath("//div[contains(@class, 'GCM-Menu-ItemLabel')]")),
-                        menuList = $$(By.xpath("//li[contains(@class, 'header-nav__item')]"));
+            localeList = $$(By.xpath("//div[contains(@class, 'GCM-Menu-ItemLabel')]")),
+            menuList = $$(By.xpath("//li[contains(@class, 'header-nav__item')]"));
 
 
 
@@ -58,7 +57,7 @@ public class ParametrsTest extends BaseTest{
     })
     @ParameterizedTest(name = "В поисковой выдаче интернет-магазина METRO присутствует {0}")
     @DisplayName(("Проверка поисковой выдачи"))
-    void succsesSearchItemFirsTest(String searchQuery){
+    void successSearchItemFirsTest(String searchQuery){
 
         openMetroPage();
         closedModal();
@@ -72,10 +71,10 @@ public class ParametrsTest extends BaseTest{
             @Tag("smoke"),
             @Tag("web")
     })
-    @CsvFileSource(resources = "/succsesSearchItemTest.csv")
+    @CsvFileSource(resources = "/successSearchItemTest.csv")
     @ParameterizedTest(name = "В поисковой выдаче интернет-магазина METRO присутствует {0}")
     @DisplayName(("Проверка поисковой выдачи"))
-    void succsesSearchItemSecondTest(String searchQuery){
+    void successSearchItemSecondTest(String searchQuery){
 
         openMetroPage();
         closedModal();
@@ -88,10 +87,10 @@ public class ParametrsTest extends BaseTest{
             @Tag("smoke"),
             @Tag("web")
     })
-    @CsvFileSource(resources = "/succsesSearchItemTest.csv")
+    @CsvFileSource(resources = "/successSearchItemTest.csv")
     @ParameterizedTest(name = "Поисковая выдача не пустая для запроса товара - {0}")
     @DisplayName(("Проверка поисковой выдачи"))
-    void SearchResultNotEmptyTest(String searchQuery){
+    void searchResultNotEmptyTest(String searchQuery){
 
         openMetroPage();
         closedModal();
@@ -122,5 +121,7 @@ public class ParametrsTest extends BaseTest{
         menuList.filter(Condition.visible).should(CollectionCondition.texts(expectedButtons));
 
     }
+
+
 
 }
